@@ -3,12 +3,12 @@ import java.util.List;
 
 public class leet78 {
 
-    private List<List<Integer>> subsets(int[] nums) {
+    private static List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> list = new ArrayList<>();//结果数组
         backtrack(list,new ArrayList<>(),nums,0);//结果数组、临时数组、搜索内容、开始节点
         return list;
     }
-    public void backtrack(List<List<Integer>> list,List<Integer> templist,int[] nums,int start){
+    public static void backtrack(List<List<Integer>> list,List<Integer> templist,int[] nums,int start){
         list.add(new ArrayList<>(templist));
         for(int i=start;i<nums.length;i++){//从i节点开始向后遍历
             templist.add(nums[i]);//将此节点加入到数组中
@@ -18,7 +18,7 @@ public class leet78 {
     }
     public static void main(String[] args) {
         int[] a = {1,2,3};
-        System.out.println(DfsSubset(a));
+        System.out.println(subsets(a));
 
     }
 
@@ -46,7 +46,7 @@ public class leet78 {
         res.add(new ArrayList<>(subset));//此处新建数组，防止引用传递
         if(index==nums.length)
             return;
-        for(int i=index;i<nums.length;i++)//走完1，2，3之后，返回到2，然后返回到1，i=2的走完了，该i=3的了？？
+        for(int i=index;i<nums.length;i++)//走完1，2，3之后，返回到2，然后返回到1，i=2的走完了，此处i表示的是选择了第几种可能
         {
             subset.add(nums[i]);
             DFS(nums,res,subset,i+1);
