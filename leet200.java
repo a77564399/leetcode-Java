@@ -18,8 +18,8 @@ public class leet200 {
                     for(int[] d:directions) {
                         int x = i+d[0];
                         int y = j+d[1];
-                        if(x>=0&&x<row&&y>=0&&y<col&&grid[x][y]==1){
-                            uf.quickUnion(i*col+j,x*col+y);
+                        if(x>=0&&x<row&&y>=0&&y<col&&grid[x][y]==1){//注意此处要判断另外一个元素是否是1
+                            uf.quickUnion(i*col+j,x*col+y);//快速Union并在方法中合并时将合并数值+1
                         }
                     }
                 }else {
@@ -28,6 +28,7 @@ public class leet200 {
             }
         }
         System.out.println(all-uf.getUniunNum());
+
     }
 
 }
